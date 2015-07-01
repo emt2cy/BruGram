@@ -1,5 +1,5 @@
 class PhotosController < ApplicationController
-	before_action :authenticate_user!, :except => [:show_all]
+	before_action :authenticate_user!
 
 	def show_all
 		@photos = Photo.where(public: true)

@@ -1,5 +1,6 @@
-Rails.application.routes.draw do
+Rails.application.routes.draw do 
   devise_for :users
+
   resources :users do
     resources :photos
   end 
@@ -8,9 +9,9 @@ Rails.application.routes.draw do
     resources :comments
   end
 
-  get '/photos', to: 'photos#show_all'
+  get '/photosshowall' => 'photos#show_all', :as => 'photos_show_all'
 
-  root 'photos#show_all'
+  root 'welcome#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
