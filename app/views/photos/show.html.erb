@@ -1,0 +1,8 @@
+<%= image_tag @photo.image %> <br>
+<%= @photo.caption %> <br>
+<%= link_to "Edit", edit_user_photo_path(current_user, @photo) %> |
+<%= link_to 'Delete', user_photo_path(current_user, @photo),
+			method: :delete,
+              data: { confirm: 'Are you sure?' } %> <br>
+<%= link_to 'My Photos', user_photos_path(current_user) %>
+

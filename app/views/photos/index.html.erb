@@ -1,7 +1,13 @@
 <ul>
 <% @photos.each do |photo| %>
+	<%= image_tag photo.image %> <br>
 	<%= photo.caption %>
-	<%= image_tag photo.image %>
+	<%= link_to 'Show Photo', user_photo_path(current_user, photo) %>
+	<%= link_to 'Delete', user_photo_path(current_user, photo),
+			method: :delete,
+              data: { confirm: 'Are you sure?' } %>
 <% end %>
 </ul>
 
+<%= link_to "Public Feed", photos_path %> |
+<%= link_to "Add New Photo", new_user_photo_path %>

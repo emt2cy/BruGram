@@ -1,6 +1,10 @@
 class PhotosController < ApplicationController
 	before_action :authenticate_user!
 
+	def show_all
+		@photos = Photo.where(public: true)
+	end
+
 	def index
 		@photos = current_user.photos
 	end
@@ -23,8 +27,25 @@ class PhotosController < ApplicationController
 		end
 	end
 
-	def show_all
-		@photos = Photo.where(public: true)
+	def edit
+		@photo = current_user.photos.find(params[:id])
+	end
+
+	def update
+		@photo = current_user.photos.find(params[:id])
+
+		if @photo.update(photo_params)
+			redirect_to user_photo_path(current_user, @photo)
+		else
+			render 'edit'
+		end
+	end
+
+	def destroy
+		@photo = current_user.photos.find(params[:id])
+		@photo.destroy
+
+		redirect_to user_photos_path
 	end
 
 private
