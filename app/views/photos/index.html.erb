@@ -1,4 +1,7 @@
+<ul>
 <% @photos.each do |photo| %>
-<%= photo.caption %>
-<%= link_to 'Show', user_photo_path (current_user, photo) %>
+	<%= photo.caption %>
+	<%= image_tag photo.image %>
 <% end %>
+</ul>
+

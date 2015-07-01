@@ -2,12 +2,12 @@ class PhotosController < ApplicationController
 	before_action :authenticate_user!
 
 	def index
-		user = User.find(params[:user_id]).to_i
-		if current_user.id == user
 		@photos = current_user.photos
-	else
-		@photos = user.photos.where(public:true)
-	end 
+	end
+
+	def show
+		@photo = current_user.photos.find(params[:id])
+	end
 
 	def new
 		@photo = current_user.photos.build
@@ -17,9 +17,9 @@ class PhotosController < ApplicationController
 		@photo = current_user.photos.build(photo_params)
 
 		if @photo.save
-			redirect_to @photo
+			redirect_to user_photos_path
 		else
-			render 'new'
+			render 'photos/index'
 		end
 	end
 
@@ -29,7 +29,7 @@ class PhotosController < ApplicationController
 
 private
 	def photo_params
-		params.require(:photo).permit(:caption)
-end
+		params.require(:photo).permit(:public, :caption, :image)
+	end
 
 end

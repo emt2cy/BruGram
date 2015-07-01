@@ -1,0 +1,7 @@
+<% @photos.each do |photo| %>
+<%= photo.caption %>
+<%= photo.image %>
+
+
+<%= link_to 'Show User Photos', user_photos_path(current_user) %>
+<% end %>

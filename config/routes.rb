@@ -5,7 +5,8 @@ Rails.application.routes.draw do
   end 
 
   get '/photos', to: 'photos#show_all'
-  
+
+  root 'photos#show_all'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
