@@ -4,5 +4,12 @@
 <%= link_to 'Delete', user_photo_path(current_user, @photo),
 			method: :delete,
               data: { confirm: 'Are you sure?' } %> <br>
+ 
+<h2>Comments</h2>
+<%= render @photo.comments %>
+ 
+<h2>Add a comment:</h2>
+<%= render 'comments/form' %>
+
 <%= link_to 'My Photos', user_photos_path(current_user) %>
 

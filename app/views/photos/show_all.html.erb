@@ -1,7 +1,6 @@
-<% @photos.each do |photo| %>
-<%= photo.caption %>
-<%= photo.image %>
-
-
+<% @photos.each do |photo| %> 
+<%= image_tag photo.image %> <br>
+<%= photo.caption %> <br>
+<%= link_to 'Comment', user_photo_path(current_user, photo) %> |
 <%= link_to 'My Photos', user_photos_path(current_user) %>
 <% end %>

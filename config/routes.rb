@@ -4,6 +4,10 @@ Rails.application.routes.draw do
     resources :photos
   end 
 
+  resources :photos do 
+    resources :comments
+  end
+
   get '/photos', to: 'photos#show_all'
 
   root 'photos#show_all'
